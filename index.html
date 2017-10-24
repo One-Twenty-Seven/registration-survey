@@ -90,12 +90,22 @@
             width: 33%;
             border-left: 1px solid #777;
             border-right: 1px solid #777;
+            padding: 0px 5px;
+        }
+        @media screen and (max-width: 600px) {
+            .form h3 {
+                font-size: 0.75em;
+            }
+            .form p {
+                font-size: 0.5em;
+            }
         }
     </style>
     <body>
         <div class="container">
             <div class="form">
                 <img class="logo" src="logo.png" alt="One Twenty Seven">
+                <p>Select two departments below to compare.</p>
                 <p>
                     <select name="course1" onchange="showData()">
                         <option value="" selected="">Please select</option>
