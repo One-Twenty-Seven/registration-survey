@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>one twenty seven - Interactive Visualization</title>
+    </head>
+    <style media="screen">
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #777;
+            background:
+            linear-gradient(
+                rgba(255, 255, 255, 0.90),
+                rgba(255, 255, 255, 0.90)
+            ),
+            url("scheduling.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        .logo {
+            width: 100%;
+            max-width: 250px;
+        }
+        .container {
+            max-width: 600px;
+            padding: 5em 0 0 0;
+            margin: 0 auto;
+        }
+        .form {
+            position: relative;
+            z-index: 1;
+            background: #FFFFFF;
+            width: 100%;
+            margin: 0 auto;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+        select {
+            display: inline-block;
+            -webkit-appearance: button;
+            -webkit-border-radius: 2px;
+            -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+            -webkit-padding-end: 20px;
+            -webkit-padding-start: 2px;
+            -webkit-user-select: none;
+            background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+            background-position: 97% center;
+            background-repeat: no-repeat;
+            border: 1px solid #AAA;
+            color: #555;
+            font-size: inherit;
+            overflow: hidden;
+            padding: 5px 10px;
+            padding-right: 25px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 300px;
+            width: 40%;
+            margin: 20px auto;
+            outline: none;
+        }
+        .form h3 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .remove-padding {
+            padding: 1em 0 0 0;
+            display: none;
+        }
+        .column-left {
+            float: left;
+            width: 33%;
+            padding-right: 5px;
+        }
+        .column-right {
+            float: right;
+            width: 33%;
+            padding-left: 5px;
+        }
+        .column-center {
+            display: inline-block;
+            width: 33%;
+            border-left: 1px solid #777;
+            border-right: 1px solid #777;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <div class="form">
+                <img class="logo" src="logo.png" alt="One Twenty Seven">
+                <p>
+                    <select name="course1" onchange="showData()">
+                        <option value="" selected="">Please select</option>
+                        <option value="ANSO">Anthropology and Sociology</option>
+                        <option value="ARAB">Arabic</option>
+                        <option value="AHVC">Art History and Visual Culture</option>
+                        <option value="ARTS">Art Studio</option>
+                        <option value="ASTR">Astronomy</option>
+                        <option value="BIOL">Biology</option>
+                        <option value="BLST">Black Studies</option>
+                        <option value="CHEM">Chemistry</option>
+                        <option value="CHIN">Chinese</option>
+                        <option value="CINE">Cinema</option>
+                        <option value="CLAS">Classical Studies</option>
+                        <option value="COMM">Communication</option>
+                        <option value="CS">Computer Science</option>
+                        <option value="DANC">Dance</option>
+                        <option value="DA">Data Analytics</option>
+                        <option value="DS">Denison Seminar</option>
+                        <option value="EAST">East Asian Studies</option>
+                        <option value="ECON">Economics</option>
+                        <option value="EDUC">Education</option>
+                        <option value="ENGL">English</option>
+                        <option value="ENVS">Environmental Studies</option>
+                        <option value="FREN">French</option>
+                        <option value="GEOS">Geosciences</option>
+                        <option value="GERM">German</option>
+                        <option value="GC">Global Commerce</option>
+                        <option value="GRK">Greek</option>
+                        <option value="HESS">Health, Exer, &amp; Sport Studies</option>
+                        <option value="HIST">History</option>
+                        <option value="INTD">Interdepartmental</option>
+                        <option value="INTL">International Studies</option>
+                        <option value="JAPN">Japanese</option>
+                        <option value="LAT">Latin</option>
+                        <option value="LACS">Latin Amer &amp; Caribbean Studies</option>
+                        <option value="MATH">Mathematics</option>
+                        <option value="LANG">Modern Language</option>
+                        <option value="MUS">Music</option>
+                        <option value="MUSP">Music - Applied &amp; Performance</option>
+                        <option value="NEUR">Neuroscience</option>
+                        <option value="PHIL">Philosophy</option>
+                        <option value="PPE">Philosophy, Politics, &amp; Econ</option>
+                        <option value="PHED">Physical Education</option>
+                        <option value="PHYS">Physics</option>
+                        <option value="POSC">Political Science</option>
+                        <option value="PORT">Portuguese</option>
+                        <option value="PSYC">Psychology</option>
+                        <option value="QS">Queer Studies</option>
+                        <option value="REL">Religion</option>
+                        <option value="SPAN">Spanish</option>
+                        <option value="THTR">Theatre</option>
+                        <option value="WGST">Women's and Gender Studies</option>
+                        <option value="W">Writing</option>
+                    </select>
+                    &nbsp;vs&nbsp;
+                    <select name="course2" onchange="showData()">
+                        <option value="" selected="">Please select</option>
+                        <option value="ANSO">Anthropology and Sociology</option>
+                        <option value="ARAB">Arabic</option>
+                        <option value="AHVC">Art History and Visual Culture</option>
+                        <option value="ARTS">Art Studio</option>
+                        <option value="ASTR">Astronomy</option>
+                        <option value="BIOL">Biology</option>
+                        <option value="BLST">Black Studies</option>
+                        <option value="CHEM">Chemistry</option>
+                        <option value="CHIN">Chinese</option>
+                        <option value="CINE">Cinema</option>
+                        <option value="CLAS">Classical Studies</option>
+                        <option value="COMM">Communication</option>
+                        <option value="CS">Computer Science</option>
+                        <option value="DANC">Dance</option>
+                        <option value="DA">Data Analytics</option>
+                        <option value="DS">Denison Seminar</option>
+                        <option value="EAST">East Asian Studies</option>
+                        <option value="ECON">Economics</option>
+                        <option value="EDUC">Education</option>
+                        <option value="ENGL">English</option>
+                        <option value="ENVS">Environmental Studies</option>
+                        <option value="FREN">French</option>
+                        <option value="GEOS">Geosciences</option>
+                        <option value="GERM">German</option>
+                        <option value="GC">Global Commerce</option>
+                        <option value="GRK">Greek</option>
+                        <option value="HESS">Health, Exer, &amp; Sport Studies</option>
+                        <option value="HIST">History</option>
+                        <option value="INTD">Interdepartmental</option>
+                        <option value="INTL">International Studies</option>
+                        <option value="JAPN">Japanese</option>
+                        <option value="LAT">Latin</option>
+                        <option value="LACS">Latin Amer &amp; Caribbean Studies</option>
+                        <option value="MATH">Mathematics</option>
+                        <option value="LANG">Modern Language</option>
+                        <option value="MUS">Music</option>
+                        <option value="MUSP">Music - Applied &amp; Performance</option>
+                        <option value="NEUR">Neuroscience</option>
+                        <option value="PHIL">Philosophy</option>
+                        <option value="PPE">Philosophy, Politics, &amp; Econ</option>
+                        <option value="PHED">Physical Education</option>
+                        <option value="PHYS">Physics</option>
+                        <option value="POSC">Political Science</option>
+                        <option value="PORT">Portuguese</option>
+                        <option value="PSYC">Psychology</option>
+                        <option value="QS">Queer Studies</option>
+                        <option value="REL">Religion</option>
+                        <option value="SPAN">Spanish</option>
+                        <option value="THTR">Theatre</option>
+                        <option value="WGST">Women's and Gender Studies</option>
+                        <option value="W">Writing</option>
+                    </select>
+                </p>
+            </div>
+        </div>
+        <div class="container remove-padding">
+            <div class="form">
+                <div class="column-left">
+                    <h3></h3>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="column-center">
+                    <h3>Department</h3>
+                    <p>Avg Seats Offered</p>
+                    <p>Avg Seats Filled</p>
+                    <p>Avg Enrolled Percentage</p>
+                </div>
+                <div class="column-right">
+                    <h3></h3>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="regdata.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function recalc() {
+            var c1_count = 0, c1_offered = 0, c1_filled = 0, c1_enrolled = 0;
+            var c2_count = 0, c2_offered = 0, c2_filled = 0, c2_enrolled = 0;
+
+            for ( var i = 0; i < regdata.length; i++ ) {
+                if ( regdata[i]["dept"] == $("[name=course1]").val() ) {
+                    c1_count++;
+                    c1_offered = c1_offered + regdata[i]["ttl"];
+                    c1_filled = c1_filled + regdata[i]["enr"];
+                    c1_enrolled = c1_enrolled + (regdata[i]["enr"]/regdata[i]["ttl"]);
+                }
+                if ( regdata[i]["dept"] == $("[name=course2]").val() ) {
+                    c2_count++;
+                    c2_offered = c2_offered + regdata[i]["ttl"];
+                    c2_filled = c2_filled + regdata[i]["enr"];
+                    c2_enrolled = c2_enrolled + (regdata[i]["enr"]/regdata[i]["ttl"]);
+                }
+            }
+
+            $(".column-left h3").text($("[name=course1] option:selected").text());
+            $(".column-left p:nth-child(2)").text((c1_offered/c1_count).toFixed(2));
+            $(".column-left p:nth-child(3)").text((c1_filled/c1_count).toFixed(2));
+            $(".column-left p:nth-child(4)").text((c1_enrolled/c1_count).toFixed(2) * 100 + "%");
+
+            $(".column-right h3").text($("[name=course2] option:selected").text());
+            $(".column-right p:nth-child(2)").text((c2_offered/c2_count).toFixed(2));
+            $(".column-right p:nth-child(3)").text((c2_filled/c2_count).toFixed(2));
+            $(".column-right p:nth-child(4)").text((c2_enrolled/c2_count).toFixed(2) * 100 + "%");
+        }
+
+        function showData() {
+            if ( $("[name=course1]").val() != "" && $("[name=course2]").val() != "" ) {
+                $(".remove-padding").slideDown("fast");
+                recalc();
+            }
+            else {
+                $(".remove-padding").slideUp("fast");
+            }
+        }
+    </script>
+</html>
