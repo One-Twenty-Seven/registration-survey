@@ -253,7 +253,7 @@
             $(".column-right h3").text($("[name=course2] option:selected").text());
             $(".column-right p:nth-child(2)").text((c2_offered/c2_count).toFixed(2));
             $(".column-right p:nth-child(3)").text((c2_filled/c2_count).toFixed(2));
-            $(".column-right p:nth-child(4)").text((c2_enrolled/c2_count).toFixed(2) * 100 + "%");
+            $(".column-right p:nth-child(4)").text(((c2_enrolled/c2_count) * 100).toFixed(2) + "%");
         }
 
         function showData() {
